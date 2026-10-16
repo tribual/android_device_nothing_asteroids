@@ -7,13 +7,21 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 $(call inherit-product, device/nothing/asteroids/device.mk)
-$(call inherit-product, vendor/custom/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+
+# Extra Flags
+WITH_GMS := true
+TARGET_ENABLE_BLUR := true
+TARGET_FACE_UNLOCK_SUPPORTED := true
+RISING_MAINTAINER= tribual  
+PRODUCT_NO_CAMERA := false
 
 PRODUCT_BRAND := Nothing
 PRODUCT_DEVICE := asteroids
 PRODUCT_MANUFACTURER := Nothing
 PRODUCT_MODEL := A059
-PRODUCT_NAME := custom_asteroids
+PRODUCT_NAME := lineage_asteroids
 
 PRODUCT_GMS_CLIENTID_BASE := android-nothing
 
@@ -24,3 +32,12 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=Asteroids \
     SystemDevice=Asteroids \
     SystemName=Asteroids
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    RisingChipset="Qualcomm Snapdragon 7s Gen 3" \
+        RisingMaintainer="tribual  "
+        
+        PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
+        LOCAL_DEX_PREOPT := false
+
+
